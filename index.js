@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const personRoutes= require('./routes/personRoutes')
 const app = express()
 require('dotenv').config()
 
@@ -8,8 +9,6 @@ app.use(express.urlencoded({
 }))
 
 app.use(express.json())
-
-const personRoutes= require('./routes/personRoutes')
 
 app.use('/person',personRoutes)
 

@@ -35,7 +35,7 @@ router.get('/:id', async(req,res)=>{
     const id = req.params.id
     try{
 
-        const person=await Person.findone({_id:id})
+        const person=await Person.findOne({_id:id})
         if(!person){
             res.status(422).json({massage:"usuário não encontrado"})
             return
@@ -70,19 +70,19 @@ try{
 })
 
 router.delete("/:id", async (req,res)=>{
-    const id = req.body.id
+    const id = req.params.id
     
-    const person=await Person.findone({_id:id})
+    const person=await Person.findOne({_id:id})
     if(!person){
         res.status(422).json({massage:"usuário não encontrado"})
         return
     }
     try{
         await person.deleteOne({_id:id})
-        res.status(200).json({message:"Úsuario excluido com sucesso"})
+        res.status(200).json({message:"usuário excluido com sucesso"})
 
     }catch(error){
-        res.status(200).json({error: error })
+        res.status(500).json({error: error })
     
     }
 
