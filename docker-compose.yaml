@@ -1,0 +1,13 @@
+version: "7"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: dockerfile
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/home/node/back
+    
